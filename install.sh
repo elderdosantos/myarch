@@ -1,15 +1,14 @@
 #!/usr/bin/env sh
 
+echo "Updating all packages"
 sudo pacman -Syyu
 
 echo "Installing basic packages"
 
-sudo echo "ParallelDownloads = 5" >> /etc/pacman.conf
-
 echo "Installing yay for AUR"
 mkdir $HOME/.myarch/build
 cd $HOME/.myarch/build
-sudo pacman -S --needed git base-devel
+pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si
